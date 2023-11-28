@@ -1,0 +1,28 @@
+@import "./variables/variables.scss";
+.sidebar {
+  font-size: medium;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $greyColor;
+  color: $lightColor;
+  height: 100vh;
+  width: 20vw;
+  margin: 0;
+  h1 {
+    padding: 50px 0px;
+  }
+  button {
+    border-radius: $borderRadius;
+    font-size: medium;
+    font-weight: bold;
+    padding: 15px 15px;
+    background-color: $greyColor;
+    color: $lightColor;
+    border: none;
+    &:hover {
+      background-color: $violetColor;
+      cursor: pointer;
+    }
+  }
+}
