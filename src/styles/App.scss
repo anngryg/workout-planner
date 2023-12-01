@@ -1,7 +1,9 @@
 @import "./variables/variables.scss";
 main {
+  display: flex;
   margin: 0;
   padding: 0;
   font-family: "Lato", sans-serif;
   background-color: $darkColor;
+  position: relative;
 }
