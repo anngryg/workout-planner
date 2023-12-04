@@ -11,7 +11,9 @@ export default function NewPlanModal() {
     day < 10 ? `0${day}` : day
   }`;
 
-  const [dates, setDate] = useState({
+  const [data, setData] = useState({
+    title: "",
+    comment: "",
     startDate: outputDate,
     finishDate: outputDate,
   });
@@ -19,42 +21,62 @@ export default function NewPlanModal() {
   function onInputHandler(event) {
     const { name, value } = event.target;
 
-    setDate((prevDate) => {
+    setData((prevData) => {
       return {
-        ...prevDate,
+        ...prevData,
         [name]: value,
       };
     });
+  }
+  function logme() {
+    console.log(data);
   }
   return (
     <div className="newPlanModal">
       <label for="title">Week number</label>
       <br />
-      <input type="number" name="title" id="title"></input>
+      <input
+        type="number"
+        name="title"
+        id="title"
+        value={data.title}
+        onChange={onInputHandler}></input>
       <br />
-      <label for="startDate">Start date:</label>
+      <label for="comment">Your comment</label>
       <br />
       <input
+        type="text"
+        name="comment"
+        id="comment"
+        value={data.comment}
+        onChange={onInputHandler}></input>
+      <br />
+      <label for="startDate">Start date</label>
+      <br />
+      <input
+        className="dateInput"
         type="date"
         id="startDate"
         name="startDate"
-        value={dates.startDate}
+        value={data.startDate}
         min="2023-08-01"
         max="2028-12-31"
         onChange={onInputHandler}
       />
       <br />
-      <label for="finishDate">Finish date:</label>
+      <label for="finishDate">Finish date</label>
       <br />
       <input
+        className="dateInput"
         type="date"
         id="finishDate"
         name="finishDate"
-        value={dates.finishDate}
-        min={dates.startDate}
+        value={data.finishDate}
+        min={data.startDate}
         max="2028-12-31"
         onChange={onInputHandler}
       />
+      <button onClick={logme}>Next ➣</button>
     </div>
   );
 }

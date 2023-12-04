@@ -7,10 +7,10 @@ button {
   padding: 15px;
   background-color: $greyColor;
   color: $lightColor;
-  border: 0.1px solid $violetColor;
+  border: 0.1px solid $orangeColor;
   &:hover {
-    background-color: $violetColor;
+    background-color: $orangeColor;
     cursor: pointer;
-    transform: scale(1.1);
+    transform: $transform-scale;
   }
 }

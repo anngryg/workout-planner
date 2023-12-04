@@ -1,7 +1,10 @@
 @import "./variables/variables.scss";
 
 .newPlanModal {
-  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 500px;
   width: 50%;
   background-color: $greyColor;
@@ -12,4 +15,26 @@
   left: 60%;
   transform: translate(-50%, -50%);
   border-radius: $borderRadius;
+  font-size: 105%;
+  input {
+    background-color: $darkColor;
+    border-radius: $borderRadius;
+    border: none;
+    color: $lightColor;
+    font-family: $font-family;
+    padding: 8px;
+    width: 50%;
+    &:hover {
+      cursor: pointer;
+      transform: $transform-scale;
+      border: 1px solid $orangeColor;
+    }
+  }
+}
+button {
+  margin-top: 20px;
+}
+.dateInput::-webkit-calendar-picker-indicator {
+  background-color: $orangeColor;
+  border-radius: 5px;
 }
