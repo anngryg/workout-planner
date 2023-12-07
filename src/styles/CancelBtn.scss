@@ -1,0 +1,13 @@
+@import "./variables/variables.scss";
+.cancelBtn {
+  align-self: flex-end;
+  background-color: $greyColor;
+  border: none;
+  color: $lightColor;
+  font-size: 20px;
+  padding: 10px 10px 0px 0px;
+  &:hover {
+    cursor: pointer;
+    transform: none;
+  }
+}

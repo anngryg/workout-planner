@@ -1,0 +1,14 @@
+.cancelBtn {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  background-color: rgb(57, 57, 57);
+  border: none;
+  color: rgb(241, 241, 241);
+  font-size: 20px;
+  padding: 10px 10px 0px 0px;
+}
+.cancelBtn:hover {
+  cursor: pointer;
+  -webkit-transform: none;
+          transform: none;
+}

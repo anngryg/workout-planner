@@ -1,10 +1,11 @@
 @import "./variables/variables.scss";
 
-button {
+.styledBtn {
   border-radius: $borderRadius;
   font-size: medium;
   font-weight: bold;
   padding: 15px;
+  margin-top: 25px;
   background-color: $greyColor;
   color: $lightColor;
   border: 0.1px solid $orangeColor;

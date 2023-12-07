@@ -1,11 +1,11 @@
 import "../styles/Sidebar.scss";
-import "./SidebarButton";
-import SidebarButton from "./SidebarButton";
-export default function Sidebar() {
+import "./Button";
+import SidebarButton from "./Button";
+export default function Sidebar({ onAddNewPlan }) {
   return (
     <aside className="sidebar">
       <h1>Workout Planner</h1>
-      <SidebarButton />
+      <SidebarButton btnLabel="+ Add new plan" onClickFunction={onAddNewPlan} />
       <ul></ul>
     </aside>
   );
