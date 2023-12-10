@@ -5,10 +5,7 @@ import Input from "./Input.js";
 import Button from "./Button.js";
 import CancelBtn from "./CancelBtn.js";
 
-export default function NewPlanModal1({
-  onCloseNewPlanModal,
-  NextOnClickHandler,
-}) {
+export default function NewPlanModal1({ onCloseNewPlanModal, from1to2 }) {
   const currentDate = new Date();
   const day = currentDate.getDate();
   const month = currentDate.getMonth() + 1;
@@ -74,7 +71,7 @@ export default function NewPlanModal1({
           value={data.finishDate}
           onChange={onInputHandler}
         />
-        <Button btnLabel="Next ➣" onClickFunction={NextOnClickHandler} />
+        <Button btnLabel="Next ➣" onClickFunction={from1to2} />
       </div>
     </div>
   );

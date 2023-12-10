@@ -1,0 +1,50 @@
+@import "./variables/variables.scss";
+
+.planForm {
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .list {
+      width: 30%;
+      li {
+        list-style: none;
+      }
+    }
+  }
+  textarea {
+    background-color: $darkColor;
+    color: $lightColor;
+    padding: 8px;
+    border-radius: $borderRadius;
+    border: none;
+    margin-top: 20px;
+    margin-right: 8px;
+    width: 60%;
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $orangeColor;
+    }
+  }
+  .inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    button {
+      border-radius: $borderRadius;
+      font-size: small;
+      font-weight: bold;
+      padding: 15px;
+      margin-top: 25px;
+      background-color: $orangeColor;
+      color: $lightColor;
+      border: 0.1px solid $orangeColor;
+      &:hover {
+        background-color: $orangeColor;
+        cursor: pointer;
+        transform: $transform-scale;
+      }
+    }
+  }
+}
