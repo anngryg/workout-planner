@@ -2,7 +2,7 @@ import CancelBtn from "./CancelBtn";
 import Button from "./Button";
 import Input from "./Input";
 
-export default function NewPlanModal3({ onCloseNewPlanModal, from2to3 }) {
+export default function NewPlanModal2({ onCloseNewPlanModal, from2to3 }) {
   return (
     <div className="newPlanModal">
       <div className="planForm">

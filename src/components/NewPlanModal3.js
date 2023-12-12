@@ -1,62 +1,49 @@
-import Input from "./Input.js";
+import NewTraining from "./NewTraining.js";
 import Button from "./Button.js";
 import CancelBtn from "./CancelBtn.js";
 import "../styles/NewPlanModal3.scss";
 import { useState } from "react";
 
-export default function NewPlanModal2({ onCloseNewPlanModal }) {
-  const [data, setData] = useState({
-    exerciseTitle: "",
-    description: "",
-  });
+export default function NewPlanModal3({ onCloseNewPlanModal }) {
+  const [exercises, setExercises] = useState([]);
 
-  function onInputHandler(event) {
-    const { id, value } = event.target;
+  function addExercise(newExercise) {
+    setExercises((prevExercises) => {
+      return [...prevExercises, newExercise];
+    });
+  }
 
-    setData((prevData) => {
-      return {
-        ...prevData,
-        [id]: value,
-      };
+  function handleDeleteExercise() {
+    setExercises((prevExercises) => {
+      return prevExercises.filter((exercise, index) => {
+        return index !== IdleDeadline;
+      });
     });
   }
 
   return (
     <div className="newPlanModal">
       <CancelBtn onCloseNewPlanModal={onCloseNewPlanModal} />
-
       <div className="planForm">
         <div className="content">
           <div className="list">
             <h4>Entered exercises</h4>
-            <ul>
-              <li>xd</li>
-            </ul>
+            {exercises.map((item) => {
+              return (
+                <>
+                  <div className="exercise">
+                    <p>
+                      {item.exerciseTitle}
+                      <br></br>
+                      <small>{item.exerciseDescription}</small>
+                    </p>
+                    <CancelBtn onCloseNewPlanModal={handleDeleteExercise} />
+                  </div>
+                </>
+              );
+            })}
           </div>
-          <div className="inputs">
-            <Input
-              label="Exercise name"
-              type="text"
-              id="exerciseTitle"
-              maxLength="40"
-              value={data.exerciseTitle}
-              onChange={onInputHandler}
-            />
-            <br></br>
-            <label for="description">
-              Description and additional information{" "}
-              <small>
-                (eg. number of series, repetitions, weight, kilometers)
-              </small>
-            </label>
-            <textarea
-              id="description"
-              rows="4"
-              cols="50"
-              value={data.description}
-              onChange={onInputHandler}></textarea>
-            <button>+Add</button>
-          </div>
+          <NewTraining onAddExercise={addExercise} />
         </div>
         <Button btnLabel=" ✓ Save " />
       </div>

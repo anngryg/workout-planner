@@ -1,6 +1,7 @@
 @import "./variables/variables.scss";
 
-.planForm {
+.planForm,
+.inputs {
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -9,11 +10,13 @@
   text-align: center;
   left: 10px;
   transform: translate(10px, 0px);
+  padding: 10px;
   label {
-    margin-top: 20px;
+    margin-top: 10px;
     width: 60%;
   }
-  input {
+  input,
+  textarea {
     background-color: $darkColor;
     border-radius: $borderRadius;
     border: none;
