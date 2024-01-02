@@ -5,7 +5,7 @@ export default function Sidebar({ onAddNewPlan }) {
   return (
     <aside className="sidebar">
       <h1>Workout Planner</h1>
-      <SidebarButton btnLabel="+ Add new plan" onClickFunction={onAddNewPlan} />
+      <SidebarButton btnLabel="+ Add new plan" onClick={onAddNewPlan} />
       <ul></ul>
     </aside>
   );

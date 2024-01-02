@@ -1,8 +1,8 @@
 import "../styles/Button.scss";
 
-export default function Button({ btnLabel, onClickFunction, ...props }) {
+export default function Button({ btnLabel, ...props }) {
   return (
-    <button className="styledBtn" onClick={onClickFunction} {...props}>
+    <button className="styledBtn" {...props}>
       {btnLabel}
     </button>
   );
