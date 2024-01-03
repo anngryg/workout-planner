@@ -10,7 +10,8 @@ function App() {
     plans: [],
   });
 
-  function handleAddNewPlan() {
+  function handleAddNewPlan(event) {
+    event.preventDefault();
     setSelectedOption((prevState) => {
       return {
         ...prevState,
@@ -28,10 +29,29 @@ function App() {
   }
   let content;
   if (selectedOption.selectedPlanId === null) {
-    content = <NewPlanModal onCloseNewPlanModal={handleCloseProjectModal} />;
+    content = (
+      <NewPlanModal
+        onCancelBtnClick={handleCloseProjectModal}
+        onSavePlan={handleSavePlan}
+      />
+    );
   } else if (selectedOption.selectedPlanId === undefined) {
     content = <NoPlanSelected />;
   }
+
+  function handleSavePlan(planData) {
+    setSelectedOption((prevState) => {
+      const newPlan = {
+        ...planData,
+        id: Math.random(),
+      };
+      return {
+        ...prevState,
+        plans: [...prevState.plans, newPlan],
+      };
+    });
+  }
+  console.log(selectedOption);
   return (
     <main>
       <Sidebar onAddNewPlan={handleAddNewPlan} />

@@ -6,7 +6,7 @@ import CancelBtn from "./CancelBtn";
 import Button from "./Button";
 import { useState } from "react";
 
-export default function NewPlanModal({ onCloseNewPlanModal }) {
+export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
   const [page, setPage] = useState(0);
   const [formData, setFormData] = useState({
     title: "",
@@ -15,7 +15,7 @@ export default function NewPlanModal({ onCloseNewPlanModal }) {
     finishDate: "",
     training: {
       trainingTitle: "",
-      exerciseList: {},
+      exerciseList: [],
     },
   });
   function pageDisplay() {
@@ -28,9 +28,13 @@ export default function NewPlanModal({ onCloseNewPlanModal }) {
     }
   }
 
+  function handleSave() {
+    onSavePlan(formData);
+  }
+
   return (
     <div className="newPlanModal">
-      <CancelBtn onCloseNewPlanModal={onCloseNewPlanModal} />
+      <CancelBtn onCancelBtnClick={onCancelBtnClick} />
       <div className="planForm">
         {pageDisplay()}
         <div className="buttons">
@@ -51,9 +55,7 @@ export default function NewPlanModal({ onCloseNewPlanModal }) {
           <Button
             style={{ display: page !== 2 ? "none" : "block" }}
             btnLabel="Save ✔"
-            onClick={() => {
-              setPage((currentPage) => currentPage + 1);
-            }}
+            onClick={handleSave}
           />
         </div>
       </div>

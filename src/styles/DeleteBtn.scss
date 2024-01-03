@@ -1,5 +1,5 @@
 @import "./variables/variables.scss";
-.cancelBtn {
+.deleteBtn {
   align-self: flex-end;
   background-color: $greyColor;
   border: none;
@@ -8,7 +8,8 @@
   padding: 10px 10px 0px 0px;
   font-family: monaco, monospace;
   &:hover {
+    color: $orangeColor;
     cursor: pointer;
-    transform: $transform-scale;
+    transform: scale(1.2);
   }
 }
