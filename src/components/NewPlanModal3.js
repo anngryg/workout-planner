@@ -61,7 +61,8 @@ export default function NewPlanModal3({ formData, setFormData }) {
                 <small>{item.exerciseDescription}</small>
               </p>
               <DeleteBtn
-                onCancelBtnClick={deleteExercise}
+                label="x"
+                onDeleteBtnClick={deleteExercise}
                 exerciseId={item.id}
               />
             </div>

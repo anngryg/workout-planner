@@ -3,58 +3,73 @@ import "./styles/App.scss";
 import Sidebar from "./components/Sidebar.js";
 import NoPlanSelected from "./components/NoPlanSelected.js";
 import NewPlanModal from "./components/NewPlanModal.js";
+import SelectedPlan from "./components/SelectedPlan.jsx";
 
 function App() {
-  const [selectedOption, setSelectedOption] = useState({
+  const [plansState, setPlansState] = useState({
     selectedPlanId: undefined,
     plans: [],
   });
 
-  function handleAddNewPlan(event) {
-    event.preventDefault();
-    setSelectedOption((prevState) => {
+  function handleAddNewPlan() {
+    setPlansState((prevState) => {
       return {
         ...prevState,
         selectedPlanId: null,
       };
     });
   }
-  function handleCloseProjectModal() {
-    setSelectedOption((prevState) => {
+  function handleClosePlanModal() {
+    setPlansState((prevState) => {
       return {
         ...prevState,
         selectedPlanId: undefined,
       };
     });
   }
-  let content;
-  if (selectedOption.selectedPlanId === null) {
+  const selectedPlan = plansState.plans.find(
+    (plan) => plan.id === plansState.selectedPlanId
+  );
+  let content = <SelectedPlan plan={selectedPlan} />;
+  function handleSelectPlan(id) {
+    setPlansState((prevState) => {
+      return {
+        ...prevState,
+        selectedPlanId: id,
+      };
+    });
+  }
+  if (plansState.selectedPlanId === null) {
     content = (
       <NewPlanModal
-        onCancelBtnClick={handleCloseProjectModal}
+        onCancelBtnClick={handleClosePlanModal}
         onSavePlan={handleSavePlan}
       />
     );
-  } else if (selectedOption.selectedPlanId === undefined) {
+  } else if (plansState.selectedPlanId === undefined) {
     content = <NoPlanSelected />;
   }
 
   function handleSavePlan(planData) {
-    setSelectedOption((prevState) => {
+    setPlansState((prevState) => {
       const newPlan = {
         ...planData,
         id: Math.random(),
       };
       return {
         ...prevState,
+        selectedPlanId: undefined,
         plans: [...prevState.plans, newPlan],
       };
     });
   }
-  console.log(selectedOption);
   return (
     <main>
-      <Sidebar onAddNewPlan={handleAddNewPlan} />
+      <Sidebar
+        onAddNewPlan={handleAddNewPlan}
+        plans={plansState.plans}
+        onSelectPlan={handleSelectPlan}
+      />
       {content}
     </main>
   );

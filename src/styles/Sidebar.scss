@@ -13,4 +13,28 @@
   h1 {
     padding: 50px 0px 25px 0px;
   }
+  h2 {
+    font-size: large;
+    margin: 15px 0;
+  }
+
+  li {
+    background-color: transparent;
+    list-style: none;
+    &:hover {
+      border-radius: $borderRadius;
+      background-color: $darkColor;
+      cursor: pointer;
+    }
+  }
+  li button {
+    width: 100%;
+    padding: 10px 30px;
+    background-color: transparent;
+    border: none;
+    color: $lightColor;
+    &:hover {
+      cursor: pointer;
+    }
+  }
 }

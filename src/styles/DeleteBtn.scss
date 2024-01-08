@@ -6,7 +6,7 @@
   color: $lightColor;
   font-size: 20px;
   padding: 10px 10px 0px 0px;
-  font-family: monaco, monospace;
+  font-family: $font-family;
   &:hover {
     color: $orangeColor;
     cursor: pointer;

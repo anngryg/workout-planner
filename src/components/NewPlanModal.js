@@ -18,6 +18,7 @@ export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
       exerciseList: [],
     },
   });
+
   function pageDisplay() {
     if (page === 0) {
       return <NewPlanModal1 formData={formData} setFormData={setFormData} />;
@@ -29,7 +30,15 @@ export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
   }
 
   function handleSave() {
-    onSavePlan(formData);
+    if (formData.title.trim() === "") {
+      alert("Please add Week number");
+    } else if (formData.startDate.trim() === "") {
+      alert("Please add start date");
+    } else if (formData.finishDate.trim() === "") {
+      alert("Please add finish date");
+    } else {
+      onSavePlan(formData);
+    }
   }
 
   return (
