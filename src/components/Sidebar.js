@@ -4,8 +4,8 @@ export default function Sidebar({ onAddNewPlan, plans, onSelectPlan }) {
   return (
     <aside className="sidebar">
       <h1>Workout Planner</h1>
-      <Button btnLabel="+ Add new plan" onClick={onAddNewPlan} />
-      {plans.length > 0 ? <h2>Your plans</h2> : undefined}
+      <Button btnLabel="+ Add" onClick={onAddNewPlan} />
+      {plans.length > 0 ? <h2>Choose week</h2> : undefined}
       <ul>
         {plans.map((plan) => {
           return (

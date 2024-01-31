@@ -11,12 +11,12 @@
   margin: 0;
   min-height: 100vh;
   h1 {
-    padding: 50px 0px 25px 0px;
+    padding: 50px 0px 30px 0px;
     max-width: 90%;
   }
   h2 {
     font-size: large;
-    padding: 50px 0px 25px 0px;
+    padding: 30px 0px 10px 0px;
   }
 
   li {
@@ -33,10 +33,14 @@
     padding: 10px 30px;
     background-color: transparent;
     border: none;
+    border-radius: $borderRadius;
     color: $lightColor;
     &:hover {
       cursor: pointer;
     }
+  }
+  .styledBtn {
+    background-color: $orangeColor;
   }
 }
 @media only screen and (max-width: 600px) {
@@ -53,6 +57,8 @@
     }
     li button {
       padding: 5px 20px;
+      border: 0.1px solid $orangeColor;
+      border-radius: $borderRadius;
     }
   }
 }

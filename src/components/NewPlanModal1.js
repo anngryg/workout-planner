@@ -25,8 +25,8 @@ export default function NewPlanModal1({ formData, setFormData }) {
   return (
     <>
       <Input
-        label="Week number"
-        type="number"
+        label="Week title"
+        type="text"
         id="title"
         value={formData.title}
         onChange={onInputHandler}

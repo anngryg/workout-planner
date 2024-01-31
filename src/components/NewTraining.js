@@ -71,7 +71,7 @@ export default function NewTraining({ onAdd, handleCancelBtnClick }) {
       <CancelButton onCancelBtnClick={handleCancelBtnClick} />
       <div className="main-part">
         <div className="list">
-          <h4>Entered data</h4>
+          <h4>EXERCISES</h4>
           <h5>{newTraining.trainingName}</h5>
           <ul>
             {newTraining.exerciseList.map((exercise) => (
@@ -122,7 +122,7 @@ export default function NewTraining({ onAdd, handleCancelBtnClick }) {
           </button>
         </div>
       </div>
-      <Button btnLabel="Save Training ✔" onClick={handleSaveTraining} />
+      <Button btnLabel="Save ✔" onClick={handleSaveTraining} />
     </div>
   );
 }

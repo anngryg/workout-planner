@@ -41,12 +41,16 @@
     gap: 20px;
     h2 {
       padding: 20px 0 10px 0;
+      color: $orangeColor;
     }
     ol {
       padding-left: 15px;
     }
     li {
       background-color: transparent;
+      padding-bottom: 5px;
+      margin-bottom: 5px;
+      border-bottom: 1px solid $orangeColor;
     }
   }
   h1 {
@@ -70,7 +74,7 @@
     font-style: italic;
   }
   button {
-    padding: 20px;
+    padding: 15px;
     margin-left: 20vw;
     background-color: $orangeColor;
   }
@@ -106,7 +110,6 @@
       font-size: medium;
       align-self: center;
       padding: 15px;
-      color: $orangeColor;
     }
     .grid {
       grid-template-columns: repeat(2, 120px);
@@ -131,9 +134,11 @@
       }
     }
     .training-module {
+      width: 80%;
       padding: 0px 0px 25px 25px;
       margin-bottom: 10px;
       margin-right: 10px;
+      justify-content: center;
     }
     .add-training {
       margin-right: 5px;

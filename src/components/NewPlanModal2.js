@@ -101,7 +101,7 @@ export default function NewPlanModal2({ setFormData, formData }) {
   return (
     <div className="content">
       <div className="list">
-        <h4>Entered exercises</h4>
+        <h4>EXERCISES</h4>
         {formData.trainingList.map((training) => (
           <div key={training.id} className="training-entry">
             <h5>{training.trainingName}</h5>

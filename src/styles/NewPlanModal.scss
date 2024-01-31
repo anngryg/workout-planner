@@ -13,7 +13,7 @@
   label {
     padding-top: 10px;
     margin-bottom: -5px;
-    width: 60%;
+    width: 95%;
   }
   input,
   textarea {
@@ -24,7 +24,7 @@
     font-family: $font-family;
     padding: 8px;
     margin: 8px;
-    width: 70%;
+    width: 60%;
     &:hover {
       cursor: pointer;
       border: 1px solid $orangeColor;
@@ -35,7 +35,7 @@
 .newPlanModal {
   background-color: $greyColor;
   color: $lightColor;
-  width: 50%;
+  width: 45%;
   position: absolute;
   top: 50%;
   left: 60%;
@@ -46,6 +46,9 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+  .styledBtn {
+    margin-top: 20px;
+  }
 }
 .dateInput::-webkit-calendar-picker-indicator {
   background-color: $orangeColor;

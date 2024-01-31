@@ -38,24 +38,20 @@ export default function PlanData({
         <p>Finish date: </p>
         <p>{formattedFinishDate}</p>
       </div>
-      {selectedPlan.trainingList ? (
-        <h2>Trainings</h2>
-      ) : (
-        <h2>No trainings</h2>
-      )}
+      {selectedPlan.trainingList ? <h2>Trainings</h2> : <h2>No trainings</h2>}
       <div className="trainings">
         {selectedPlan.trainingList
           ? selectedPlan.trainingList.map((training) => (
               <div className="training-module">
                 <div key={training.id}>
-                  <h2>{training.trainingName}</h2>
+                  <h2>{training.trainingName.toUpperCase()}</h2>
 
                   <ol>
                     {training.exerciseList.map((exercise) => (
                       <li key={exercise.id} className="exercise">
                         <div>
                           <p>
-                            {exercise.exerciseTitle}
+                            {exercise.exerciseTitle.toUpperCase()}
                             <br />
                             <small>{exercise.exerciseDescription}</small>
                           </p>
