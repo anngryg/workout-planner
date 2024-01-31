@@ -1,15 +1,15 @@
 @import "./variables/variables.scss";
 .deleteBtn {
   align-self: flex-end;
-  background-color: $greyColor;
+  background-color: transparent;
   border: none;
   color: $lightColor;
   font-size: 20px;
-  padding: 10px 10px 0px 0px;
+  padding: 5px;
   font-family: $font-family;
+  justify-content: center;
   &:hover {
     color: $orangeColor;
     cursor: pointer;
-    transform: scale(1.2);
   }
 }

@@ -9,8 +9,10 @@
   text-align: center;
   left: 10px;
   transform: translate(10px, 0px);
+
   label {
     padding-top: 10px;
+    margin-bottom: -5px;
     width: 60%;
   }
   input,
@@ -51,7 +53,46 @@
 }
 
 .buttons {
+  background-color: transparent;
   display: flex;
   flex-direction: row;
   gap: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .newPlanModal {
+    min-width: 100%;
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-self: center;
+    top: 0%;
+    left: 0%;
+    transform: translate(0, 0);
+    font-size: large;
+    padding: 5px;
+  }
+  .buttons {
+    margin-bottom: 25px;
+  }
+  .planForm,
+  .inputs {
+    align-items: center;
+    justify-content: flex-start;
+    left: 0px;
+    transform: translate(0px, 0px);
+    label {
+      text-align: center;
+      padding: 0px;
+      margin-bottom: -5px;
+      margin-top: 15px;
+    }
+    input,
+    textarea {
+      padding: 5px;
+      margin-bottom: 10px;
+      width: 110%;
+    }
+  }
 }

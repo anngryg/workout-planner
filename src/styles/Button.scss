@@ -5,13 +5,23 @@
   font-size: medium;
   font-weight: bold;
   padding: 15px;
-  margin: 25px 0;
-  background-color: $greyColor;
+  margin-top: 25px;
+  background-color: transparent;
   color: $lightColor;
   border: 0.1px solid $orangeColor;
+
   &:hover {
     background-color: $orangeColor;
     cursor: pointer;
     transform: $transform-scale;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .styledBtn {
+    padding: 8px 8px;
+    font-size: small;
+    &:hover {
+      transform: scale(1);
+    }
   }
 }

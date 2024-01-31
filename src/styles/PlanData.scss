@@ -1,0 +1,148 @@
+@import "./variables/variables.scss";
+.planData {
+  color: $lightColor;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-left: 50px;
+  width: 80%;
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 150px);
+    p {
+      padding: 0;
+    }
+  }
+  .trainings {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    h2 {
+      padding-bottom: 20px;
+      text-align: center;
+    }
+    p {
+      padding: 0;
+    }
+  }
+  .training-module {
+    background-color: $greyColor;
+    padding: 0px 0px 25px 25px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    border-radius: $borderRadius;
+    display: flex;
+    flex-direction: row;
+    justify-content: baseline;
+    align-items: flex-start;
+    gap: 20px;
+    h2 {
+      padding: 20px 0 10px 0;
+    }
+    ol {
+      padding-left: 15px;
+    }
+    li {
+      background-color: transparent;
+    }
+  }
+  h1 {
+    padding: 30px 0px 5px 0px;
+  }
+  p {
+    padding-bottom: 20px;
+  }
+  h2 {
+    padding: 30px 0px 30px 0px;
+  }
+}
+
+.heading-line {
+  padding-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  p {
+    font-style: italic;
+  }
+  button {
+    padding: 20px;
+    margin-left: 20vw;
+    background-color: $orangeColor;
+  }
+}
+
+.add-training {
+  background-color: $greyColor;
+  padding: 30px;
+  margin-right: 30px;
+  border-radius: $borderRadius;
+  height: min-content;
+  font-size: 30px;
+  color: $lightColor;
+  border: 0.1px solid $orangeColor;
+  &:hover {
+    background-color: $orangeColor;
+    cursor: pointer;
+    transform: $transform-scale;
+  }
+  li {
+    list-style: none;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .planData {
+    width: 80%;
+    padding-top: 5px;
+    padding-left: 10px;
+    h1 {
+      font-size: medium;
+    }
+    h2 {
+      font-size: medium;
+      align-self: center;
+      padding: 15px;
+      color: $orangeColor;
+    }
+    .grid {
+      grid-template-columns: repeat(2, 120px);
+    }
+    .heading-line {
+      padding-top: 5px;
+      display: flex;
+      flex-direction: row;
+      h1 {
+        flex-wrap: nowrap;
+      }
+    }
+    .trainings {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      h2 {
+        color: $orangeColor;
+        padding-bottom: 5px;
+      }
+    }
+    .training-module {
+      padding: 0px 0px 25px 25px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+    }
+    .add-training {
+      margin-right: 5px;
+    }
+  }
+  .heading-line {
+    button {
+      padding: 10px;
+      margin-right: 5px;
+    }
+  }
+}

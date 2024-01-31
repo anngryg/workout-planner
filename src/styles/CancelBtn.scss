@@ -1,7 +1,7 @@
 @import "./variables/variables.scss";
 .cancelBtn {
   align-self: flex-end;
-  background-color: $greyColor;
+  background-color: transparent;
   border: none;
   color: $lightColor;
   font-size: 20px;
@@ -9,6 +9,7 @@
   font-family: $font-family;
   &:hover {
     cursor: pointer;
+    color: $orangeColor;
     transform: $transform-scale;
   }
 }

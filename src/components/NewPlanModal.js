@@ -1,6 +1,5 @@
 import NewPlanModal1 from "./NewPlanModal1";
 import NewPlanModal2 from "./NewPlanModal2";
-import NewPlanModal3 from "./NewPlanModal3";
 import "../styles/NewPlanModal.scss";
 import CancelBtn from "./CancelBtn";
 import Button from "./Button";
@@ -13,10 +12,7 @@ export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
     comment: "",
     startDate: "",
     finishDate: "",
-    training: {
-      trainingTitle: "",
-      exerciseList: [],
-    },
+    trainingList: [],
   });
 
   function pageDisplay() {
@@ -24,8 +20,6 @@ export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
       return <NewPlanModal1 formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
       return <NewPlanModal2 formData={formData} setFormData={setFormData} />;
-    } else if (page === 2) {
-      return <NewPlanModal3 formData={formData} setFormData={setFormData} />;
     }
   }
 
@@ -55,14 +49,14 @@ export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
             }}
           />
           <Button
-            style={{ display: page === 2 ? "none" : "block" }}
+            style={{ display: page === 1 ? "none" : "block" }}
             btnLabel="Next 🡺"
             onClick={() => {
               setPage((currentPage) => currentPage + 1);
             }}
           />
           <Button
-            style={{ display: page !== 2 ? "none" : "block" }}
+            style={{ display: page === 0 ? "none" : "block" }}
             btnLabel="Save ✔"
             onClick={handleSave}
           />
