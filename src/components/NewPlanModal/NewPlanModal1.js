@@ -1,6 +1,6 @@
-import "../styles/NewPlanModal.scss";
-import "./Input.js";
-import Input from "./Input.js";
+import "../../styles/NewPlanModal.scss";
+import "../ButtonsAndInput/Input.js";
+import Input from "../ButtonsAndInput/Input.js";
 
 export default function NewPlanModal1({ formData, setFormData }) {
   const currentDate = new Date();

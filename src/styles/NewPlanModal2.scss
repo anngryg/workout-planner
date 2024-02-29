@@ -12,6 +12,8 @@
     h5 {
       color: $orangeColor;
       font-size: large;
+      display: flex;
+      justify-content: left;
     }
   }
   .exercise {
@@ -19,9 +21,9 @@
     padding: 10px 0px;
     border-bottom: 1px solid $orangeColor;
     display: flex;
+    justify-content: left;
     flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    white-space: pre-wrap;
   }
   .inputs {
     background-color: transparent;
@@ -37,6 +39,8 @@
   .list {
     small {
       font-style: italic;
+      direction: flex;
+      justify-content: left;
     }
     li {
       display: grid;

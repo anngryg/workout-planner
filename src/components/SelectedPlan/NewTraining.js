@@ -1,10 +1,10 @@
 import { useState } from "react";
-import Input from "./Input";
-import DeleteBtn from "./DeleteBtn";
+import Input from "../ButtonsAndInput/Input";
+import DeleteBtn from "../ButtonsAndInput/DeleteBtn";
 import React from "react";
-import "../styles/NewTraining.scss";
-import CancelButton from "./CancelBtn";
-import Button from "./Button";
+import "../../styles/NewTraining.scss";
+import CancelButton from "../ButtonsAndInput/CancelBtn";
+import Button from "../ButtonsAndInput/Button";
 
 export default function NewTraining({ onAdd, handleCancelBtnClick }) {
   const [newTraining, setNewTraining] = useState({
@@ -57,13 +57,17 @@ export default function NewTraining({ onAdd, handleCancelBtnClick }) {
       trainingName: newTraining.trainingName,
       exerciseList: newTraining.exerciseList,
     };
-    onAdd(training);
-    setNewTraining({
-      trainingName: "",
-      exerciseList: [],
-      exerciseTitle: "",
-      exerciseDescription: "",
-    });
+    if (training.trainingName === "" || training.exerciseList.length === 0) {
+      alert("Please fill out the gaps");
+    } else {
+      onAdd(training);
+      setNewTraining({
+        trainingName: "",
+        exerciseList: [],
+        exerciseTitle: "",
+        exerciseDescription: "",
+      });
+    }
   }
 
   return (
@@ -72,13 +76,13 @@ export default function NewTraining({ onAdd, handleCancelBtnClick }) {
       <div className="main-part">
         <div className="list">
           <h4>EXERCISES</h4>
-          <h5>{newTraining.trainingName}</h5>
+          <h5>{newTraining.trainingName.toUpperCase()}</h5>
           <ul>
             {newTraining.exerciseList.map((exercise) => (
               <li key={exercise.id} className="exercise">
                 <div>
                   <p>
-                    {exercise.exerciseTitle}
+                    {exercise.exerciseTitle.toUpperCase()}
                     <br />
                     <small>{exercise.exerciseDescription}</small>
                   </p>
@@ -122,7 +126,7 @@ export default function NewTraining({ onAdd, handleCancelBtnClick }) {
           </button>
         </div>
       </div>
-      <Button btnLabel="Save ✔" onClick={handleSaveTraining} />
+      <Button btnLabel="Save" onClick={handleSaveTraining} />
     </div>
   );
 }

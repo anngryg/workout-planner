@@ -3,7 +3,6 @@
 .newTraining {
   background-color: $greyColor;
   color: $lightColor;
-
   position: absolute;
   top: 50%;
   left: 60%;
@@ -47,6 +46,8 @@
     }
   }
   .list {
+    max-width: 50%;
+    flex-wrap: wrap;
     h5 {
       padding: 10px 0;
       font-size: larger;
@@ -56,6 +57,7 @@
     text-align: center;
     small {
       font-style: italic;
+      white-space: pre-wrap;
     }
     li {
       list-style: none;

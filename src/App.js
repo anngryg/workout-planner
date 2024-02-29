@@ -1,154 +1,122 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles/App.scss";
-import Sidebar from "./components/Sidebar.js";
-import NoPlanSelected from "./components/NoPlanSelected.js";
-import NewPlanModal from "./components/NewPlanModal.js";
-import SelectedPlan from "./components/SelectedPlan.js";
+import Sidebar from "./components/Sidebar/Sidebar.js";
+import NoPlanSwitcher from "./components/NoPlanSelected/NoPlanSwitcher.js";
+import NewPlanModal from "./components/NewPlanModal/NewPlanModal.js";
+import SelectedPlan from "./components/SelectedPlan/SelectedPlan.js";
+import { db, auth } from "./config/firebase.js";
+import {
+  doc,
+  getDocs,
+  collection,
+  addDoc,
+  deleteDoc,
+} from "firebase/firestore";
 
-function App() {
-  const [plansState, setPlansState] = useState({
-    selectedPlanId: undefined,
-    plans: [],
-    trainings: [],
-  });
-  const selectedPlan = plansState.plans.find(
-    (plan) => plan.id === plansState.selectedPlanId
-  );
+export default function App() {
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+  const [plansList, setPlanList] = useState([]);
+  const plansCollectionRef = collection(db, "plans");
+  const [selectedPage, setSelectedPage] = useState(undefined);
+
+  const getPlansList = async () => {
+    try {
+      const data = await getDocs(plansCollectionRef);
+      const filteredData = data.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      setPlanList(filteredData);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getPlansList();
+  }, []);
+
+  function handleAddNewPlan() {
+    setSelectedPage(null);
+  }
+
+  function handleClosePlanModal() {
+    setSelectedPage(undefined);
+  }
+  function handleSelectPlan(id) {
+    setSelectedPage(id);
+  }
+
+  function goToMain() {
+    setSelectedPage(undefined);
+  }
+
+  const handleSavePlan = async (planData) => {
+    try {
+      await addDoc(plansCollectionRef, {
+        id: Math.random(),
+        title: planData.title,
+        comment: planData.comment,
+        startDate: planData.startDate,
+        finishDate: planData.finishDate,
+        trainingList: planData.trainingList,
+        userId: auth?.currentUser?.uid,
+      });
+      setSelectedPage(undefined);
+      getPlansList();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleDeletePlan = async () => {
+    let id = selectedPage;
+    try {
+      const planDoc = doc(db, "plans", id);
+      await deleteDoc(planDoc);
+      setSelectedPage(undefined);
+      getPlansList();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const selectedPlan = plansList.find((plan) => plan.id === selectedPage);
+
   let content = (
     <SelectedPlan
       selectedPlan={selectedPlan}
       onDeletePlan={handleDeletePlan}
-      onAddTraining={handleAddTraining}
-      onDeleteTraining={handleDeleteTraining}
+      getPlansList={getPlansList}
     />
   );
 
-  if (plansState.selectedPlanId === null) {
+  if (selectedPage === null) {
     content = (
       <NewPlanModal
         onCancelBtnClick={handleClosePlanModal}
         onSavePlan={handleSavePlan}
       />
     );
-  } else if (plansState.selectedPlanId === undefined) {
-    content = <NoPlanSelected />;
-  }
-
-  function handleAddTraining(training) {
-    setPlansState((prevState) => {
-      const selectedPlanIndex = prevState.plans.findIndex(
-        (plan) => plan.id === prevState.selectedPlanId
-      );
-      if (selectedPlanIndex !== -1) {
-        const newTraining = {
-          id: Math.random(),
-          trainingName: training.trainingName,
-          exerciseList: training.exerciseList,
-        };
-        const updatedPlans = [...prevState.plans];
-        updatedPlans[selectedPlanIndex] = {
-          ...updatedPlans[selectedPlanIndex],
-          trainingList: [
-            ...updatedPlans[selectedPlanIndex].trainingList,
-            newTraining,
-          ],
-        };
-        return {
-          ...prevState,
-          selectedPlanId: undefined,
-          plans: updatedPlans,
-          trainings: [newTraining, ...prevState.trainings],
-        };
-      }
-      return prevState;
-    });
-  }
-  function handleDeleteTraining(trainingId) {
-    setPlansState((prevState) => {
-      const selectedPlanIndex = prevState.plans.findIndex(
-        (plan) => plan.id === prevState.selectedPlanId
-      );
-      if (selectedPlanIndex !== -1) {
-        const updatedPlans = [...prevState.plans];
-        const updatedTrainingList = updatedPlans[
-          selectedPlanIndex
-        ].trainingList.filter((training) => training.id !== trainingId);
-        updatedPlans[selectedPlanIndex] = {
-          ...updatedPlans[selectedPlanIndex],
-          trainingList: updatedTrainingList,
-        };
-        return {
-          ...prevState,
-          plans: updatedPlans,
-        };
-      }
-      return prevState;
-    });
-  }
-
-  function handleAddNewPlan() {
-    setPlansState((prevState) => {
-      return {
-        ...prevState,
-        selectedPlanId: null,
-      };
-    });
-  }
-
-  function handleDeletePlan() {
-    setPlansState((prevState) => {
-      return {
-        ...prevState,
-        selectedPlanId: undefined,
-        plans: prevState.plans.filter(
-          (plan) => plan.id !== prevState.selectedPlanId
-        ),
-      };
-    });
-  }
-
-  function handleClosePlanModal() {
-    setPlansState((prevState) => {
-      return {
-        ...prevState,
-        selectedPlanId: undefined,
-      };
-    });
-  }
-
-  function handleSelectPlan(id) {
-    setPlansState((prevState) => {
-      return {
-        ...prevState,
-        selectedPlanId: id,
-      };
-    });
-  }
-
-  function handleSavePlan(planData) {
-    setPlansState((prevState) => {
-      const newPlan = {
-        ...planData,
-        id: Math.random(),
-      };
-      return {
-        ...prevState,
-        selectedPlanId: undefined,
-        plans: [...prevState.plans, newPlan],
-      };
-    });
+  } else if (selectedPage === undefined) {
+    content = (
+      <NoPlanSwitcher
+        isUserLoggedIn={isUserLoggedIn}
+        setIsUserLoggedIn={setIsUserLoggedIn}
+      />
+    );
   }
 
   return (
     <main>
       <Sidebar
         onAddNewPlan={handleAddNewPlan}
-        plans={plansState.plans}
+        plans={plansList}
         onSelectPlan={handleSelectPlan}
+        isUserLoggedIn={isUserLoggedIn}
+        goToMain={goToMain}
       />
       {content}
     </main>
   );
 }
-
-export default App;

@@ -1,5 +1,5 @@
-import DeleteBtn from "./DeleteBtn";
-import "../styles/PlanData.scss";
+import DeleteBtn from "../ButtonsAndInput/DeleteBtn";
+import "../../styles/PlanData.scss";
 export default function PlanData({
   onDeletePlan,
   onDeleteTraining,
@@ -25,7 +25,7 @@ export default function PlanData({
     <div className="planData">
       <div className="heading-line">
         <div>
-          <h1>Week number: {selectedPlan.title}</h1>
+          <h1>{selectedPlan.title}</h1>
           <p>Comment: {selectedPlan.comment}</p>
         </div>
         <button className="styledBtn" onClick={onDeletePlan}>
@@ -38,14 +38,13 @@ export default function PlanData({
         <p>Finish date: </p>
         <p>{formattedFinishDate}</p>
       </div>
-      {selectedPlan.trainingList ? <h2>Trainings</h2> : <h2>No trainings</h2>}
+      {selectedPlan.trainingList ? <h2>Trainings</h2> : null}
       <div className="trainings">
         {selectedPlan.trainingList
           ? selectedPlan.trainingList.map((training) => (
-              <div className="training-module">
-                <div key={training.id}>
+              <div key={training.id} className="training-module">
+                <div>
                   <h2>{training.trainingName.toUpperCase()}</h2>
-
                   <ol>
                     {training.exerciseList.map((exercise) => (
                       <li key={exercise.id} className="exercise">

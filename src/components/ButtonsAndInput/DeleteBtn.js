@@ -1,4 +1,4 @@
-import "../styles/DeleteBtn.scss";
+import "../../styles/DeleteBtn.scss";
 export default function DeleteBtn({ onDeleteBtnClick, exerciseId, label }) {
   return (
     <button

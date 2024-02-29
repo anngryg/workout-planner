@@ -1,8 +1,8 @@
 import NewPlanModal1 from "./NewPlanModal1";
 import NewPlanModal2 from "./NewPlanModal2";
-import "../styles/NewPlanModal.scss";
-import CancelBtn from "./CancelBtn";
-import Button from "./Button";
+import "../../styles/NewPlanModal.scss";
+import CancelBtn from "../ButtonsAndInput/CancelBtn";
+import Button from "../ButtonsAndInput/Button";
 import { useState } from "react";
 
 export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
@@ -43,21 +43,21 @@ export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
         <div className="buttons">
           <Button
             style={{ display: page === 0 ? "none" : "block" }}
-            btnLabel="🡸 Back"
+            btnLabel="Back"
             onClick={() => {
               setPage((currentPage) => currentPage - 1);
             }}
           />
           <Button
             style={{ display: page === 1 ? "none" : "block" }}
-            btnLabel="Next 🡺"
+            btnLabel="Next"
             onClick={() => {
               setPage((currentPage) => currentPage + 1);
             }}
           />
           <Button
             style={{ display: page === 0 ? "none" : "block" }}
-            btnLabel="Save ✔"
+            btnLabel="Save"
             onClick={handleSave}
           />
         </div>

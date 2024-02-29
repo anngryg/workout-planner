@@ -1,7 +1,7 @@
-import Input from "./Input";
+import Input from "../ButtonsAndInput/Input";
 import { useState } from "react";
-import DeleteBtn from "./DeleteBtn";
-import "../styles/NewPlanModal2.scss";
+import DeleteBtn from "../ButtonsAndInput/DeleteBtn";
+import "../../styles/NewPlanModal2.scss";
 
 export default function NewPlanModal2({ setFormData, formData }) {
   const [newTraining, setNewTraining] = useState({
@@ -80,17 +80,24 @@ export default function NewPlanModal2({ setFormData, formData }) {
 
   function deleteExercise(trainingId, exerciseId) {
     setFormData((prevData) => {
-      const updatedTrainingList = prevData.trainingList.map((training) =>
-        training.trainingName === trainingId
-          ? {
-              ...training,
-              exerciseList: training.exerciseList.filter(
-                (exercise) => exercise.id !== exerciseId
-              ),
+      const updatedTrainingList = prevData.trainingList
+        .map((training) => {
+          if (training.id === trainingId) {
+            const updatedExerciseList = training.exerciseList.filter(
+              (exercise) => exercise.id !== exerciseId
+            );
+            // Jeśli lista ćwiczeń dla danego treningu jest pusta, usuwamy ten trening z listy treningów
+            if (updatedExerciseList.length === 0) {
+              return null;
             }
-          : training
-      );
-
+            return {
+              ...training,
+              exerciseList: updatedExerciseList,
+            };
+          }
+          return training;
+        })
+        .filter(Boolean);
       return {
         ...prevData,
         trainingList: updatedTrainingList,
@@ -104,13 +111,13 @@ export default function NewPlanModal2({ setFormData, formData }) {
         <h4>EXERCISES</h4>
         {formData.trainingList.map((training) => (
           <div key={training.id} className="training-entry">
-            <h5>{training.trainingName}</h5>
+            <h5>{training.trainingName.toUpperCase()}</h5>
             <ul>
               {training.exerciseList.map((exercise) => (
                 <li key={exercise.id} className="exercise">
                   <div>
                     <p>
-                      {exercise.exerciseTitle}
+                      {exercise.exerciseTitle.toUpperCase()}
                       <br />
                       <small>{exercise.exerciseDescription}</small>
                     </p>
@@ -119,7 +126,7 @@ export default function NewPlanModal2({ setFormData, formData }) {
                     label="x"
                     exerciseId={exercise.id}
                     onDeleteBtnClick={() =>
-                      deleteExercise(training.trainingId, exercise.id)
+                      deleteExercise(training.id, exercise.id)
                     }
                   />
                 </li>
