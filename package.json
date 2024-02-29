@@ -1,6 +1,6 @@
 {
-  "homepage": "http://anngryg.github.io/management-app",
-  "name": "management-app",
+  "homepage": "http://anngryg.github.io/workout-planner",
+  "name": "workout-planner",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
