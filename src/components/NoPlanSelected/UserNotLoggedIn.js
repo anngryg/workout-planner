@@ -3,7 +3,7 @@ import Button from "../ButtonsAndInput/Button.js";
 import "../../styles/NoPlanSelected.scss";
 import { auth, googleProvider } from "../../config/firebase.js";
 import { signInWithPopup } from "firebase/auth";
-
+import React from "react";
 export default function UserNotLoggedIn({ setIsUserLoggedIn }) {
   const signInWithGoogle = async () => {
     googleProvider.setCustomParameters({ prompt: "select_account" });

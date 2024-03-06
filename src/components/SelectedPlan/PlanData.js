@@ -1,5 +1,7 @@
 import DeleteBtn from "../ButtonsAndInput/DeleteBtn";
 import "../../styles/PlanData.scss";
+import React from "react";
+
 export default function PlanData({
   onDeletePlan,
   onDeleteTraining,

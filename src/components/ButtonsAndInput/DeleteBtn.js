@@ -1,4 +1,5 @@
 import "../../styles/DeleteBtn.scss";
+import React from "react";
 export default function DeleteBtn({ onDeleteBtnClick, exerciseId, label }) {
   return (
     <button

@@ -4,6 +4,7 @@ import "../../styles/NewPlanModal.scss";
 import CancelBtn from "../ButtonsAndInput/CancelBtn";
 import Button from "../ButtonsAndInput/Button";
 import { useState } from "react";
+import React from "react";
 
 export default function NewPlanModal({ onCancelBtnClick, onSavePlan }) {
   const [page, setPage] = useState(0);

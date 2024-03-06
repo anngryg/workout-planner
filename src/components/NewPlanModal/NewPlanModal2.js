@@ -1,5 +1,5 @@
 import Input from "../ButtonsAndInput/Input";
-import { useState } from "react";
+import { useState, React } from "react";
 import DeleteBtn from "../ButtonsAndInput/DeleteBtn";
 import "../../styles/NewPlanModal2.scss";
 

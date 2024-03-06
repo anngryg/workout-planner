@@ -2,6 +2,7 @@ import { auth } from "../../config/firebase";
 import { signOut } from "firebase/auth";
 import "../../styles/UserLoggedIn.scss";
 import Button from "../ButtonsAndInput/Button";
+import React from "react";
 
 export default function UserLoggedIn({ setIsUserLoggedIn }) {
   const usersEmail = auth?.currentUser?.email;

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import React from "react";
 import "./styles/App.scss";
 import Sidebar from "./components/Sidebar/Sidebar.js";
 import NoPlanSwitcher from "./components/NoPlanSelected/NoPlanSwitcher.js";
@@ -34,6 +35,7 @@ export default function App() {
 
   useEffect(() => {
     getPlansList();
+    // eslint-disable-next-line
   }, []);
 
   function handleAddNewPlan() {

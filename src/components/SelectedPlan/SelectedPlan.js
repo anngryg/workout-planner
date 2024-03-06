@@ -1,4 +1,5 @@
 import { useState } from "react";
+import React from "react";
 
 import NewTraining from "./NewTraining";
 import PlanData from "./PlanData";

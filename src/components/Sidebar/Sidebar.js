@@ -1,6 +1,7 @@
 import "../../styles/Sidebar.scss";
 import { auth } from "../../config/firebase";
 import SidebarContent from "./SidebarContent";
+import React from "react";
 
 export default function Sidebar({
   onAddNewPlan,

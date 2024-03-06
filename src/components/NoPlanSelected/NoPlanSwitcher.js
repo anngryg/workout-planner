@@ -1,5 +1,6 @@
 import NoPlanSelected from "./UserNotLoggedIn";
 import UserLoggedIn from "./UserLoggedIn";
+import React from "react";
 
 export default function NoPlanSwitcher({ setIsUserLoggedIn, isUserLoggedIn }) {
   let content = false;

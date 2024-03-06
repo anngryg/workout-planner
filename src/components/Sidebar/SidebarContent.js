@@ -1,5 +1,5 @@
 import Button from "../ButtonsAndInput/Button";
-
+import React from "react";
 export default function SidebarContent({
   onAddNewPlan,
   usersPlans,
