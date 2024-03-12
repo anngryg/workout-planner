@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/workout-planner/static/css/main.e9d6e26c.css",
+    "main.js": "/workout-planner/static/js/main.f1eb1b91.js",
+    "index.html": "/workout-planner/index.html",
+    "main.e9d6e26c.css.map": "/workout-planner/static/css/main.e9d6e26c.css.map",
+    "main.f1eb1b91.js.map": "/workout-planner/static/js/main.f1eb1b91.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e9d6e26c.css",
+    "static/js/main.f1eb1b91.js"
+  ]
+}
